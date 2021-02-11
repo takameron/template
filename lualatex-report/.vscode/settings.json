@@ -1,0 +1,27 @@
+{
+    "latex-workshop.latex.recipes":[{
+        "name": "lualatex",
+        "tools" : [
+          "latexmk",
+          "web_optimisation"
+        ]
+      }],
+      "latex-workshop.latex.tools": [{
+        "name": "latexmk",
+        "command": "latexmk",
+        "args" : [
+
+        ]
+      },{
+        "name": "web_optimisation",
+        "command": "qpdf",
+        "args" : [
+          "--linearize",
+          "%DOCFILE%.pdf",
+          "web.pdf"
+        ]
+      }
+    ],
+      "latex-workshop.view.pdf.viewer":"tab", // 「Ctrl + Alt + v」で使うPDFビューワをタブに設定
+      "latex-workshop.latex.autoClean.run": "onBuilt" // ビルド時に一時ファイル(.auxなど)を削除
+}

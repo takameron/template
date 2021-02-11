@@ -1,0 +1,170 @@
+\documentclass[a4paper]{ltjsarticle}
+
+\usepackage{luatexja} % ltjclasses, ltjsclasses を使うときはこの行不要
+\usepackage{graphicx} % 画像
+\usepackage{here} % 図表の位置を強制的に指定
+\usepackage{url} % URIをそのまま表示＆ハイパーリンク化
+\usepackage{amsmath,amssymb} % 数式
+\usepackage[top=2.5cm, bottom=3.5cm, left=2.5cm, right=2.5cm]{geometry} % 余白
+
+% source code
+\usepackage{listings}
+\def\lstlistingname{ソースコード}
+\def\lstlistlistingname{ソースコード目次}
+
+% ソースコードの設定
+\lstset{%
+% language={C}, %
+frame=single, %
+numbers=left, %
+stepnumber=1, %
+numberstyle={\scriptsize}, %
+numbersep=1\zw, %
+breaklines=true,
+%frame={tb}, %
+framerule=.2pt, %
+basicstyle={\small}, %
+commentstyle={\small\ttfamily}, %
+keywordstyle={\small\bfseries}, %
+%backgroundcolor={\color[gray]{.95}}, %
+stringstyle={\small\ttfamily},
+identifierstyle={\small}, %
+ndkeywordstyle={\small}, %
+showstringspaces=false, %
+columns=[l]{fullflexible}, %
+xrightmargin=0\zw, %
+xleftmargin=2\zw, %
+%\renewcommand{\thelstnumber}{\arabic{lstnumber}:}, %
+morecomment=[l]{//}%
+%escapechar=\@%変更点強調用(コメント解除するとソースコードの1行目の先頭に/が入る)
+}
+
+% 実行結果
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins}
+
+% 実行結果の枠の設定(resultで呼び出せる)
+\newtcolorbox{result}[2][]{enhanced,
+  colbacktitle=white, colback=white,
+  coltitle=black, colframe=black,
+  title={#2}, center title, breakable, #1
+}
+
+\makeatletter
+\title{タイトル}
+\newcommand{\@subtitle}{サブタイトル}
+\newcommand{\@affiliation}{学籍番号 xxxxx \\ 〇〇工学科 ●学年 □□□番}
+\author{著者名}
+\date{2020年10月10日}
+\newcommand{\@limit}{2020年10月10日 17:00}
+\newcommand{\@keyword}{キーワード1; キーワード2;}
+
+\usepackage{hyperxmp} % XMP support with hyperref
+\usepackage[pdfencoding=auto,pdfa,pdfapart=1,pdfaconformance=B]{hyperref} % PDF/A compatible
+
+\hypersetup{% hyperref options (and metadata)
+    pdflang={ja-JP},
+    pdftitle={\@title},
+    pdfsubject={\@subtitle},
+    pdfauthor={\@author},
+    pdfkeywords={\@keyword},
+    bookmarksnumbered=true,
+    bookmarksopen=false,
+    colorlinks=false,
+}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+  \vspace*{120truept}
+  {\huge \@title}\\ % タイトル
+  \vspace{10truept}
+  {\Large \@subtitle}\\ % サブタイトル（なければコメントアウト）
+  \end{center}
+
+  % \vspace{30truept}
+  % {\Large 実験場所　〇〇番教室\hspace{\fill}担当　●●先生, □□先生}
+
+  % \vspace{30truept}
+  % {\Large 実験年月日}\\
+  % \begin{center}
+  %   {\large
+  %   第1回　令和元年06月26日（1コマ～2コマ）\\
+  %   第2回　令和元年07月03日（1コマ～2コマ）\\
+  %   第3回　令和元年07月10日（1コマ～2コマ）\\
+  %   第4回　令和元年07月24日（1コマ～2コマ）\\}
+  % \end{center}
+
+  % 空白調整
+  \vspace{120truept}
+
+  \vspace{50truept}
+  \begin{center}
+    {\LARGE \@affiliation}\\
+    \vspace{15truept}
+    {\LARGE \@author}\\ % 著者
+  \end{center}
+
+  \vspace{50truept}
+  \begin{center}
+    {\large 提出日 \@date}\\ % 提出日
+    {\large 提出期限 \@limit}\\ % 提出期限
+  \end{center}
+\end{titlepage}
+
+% ファイル名　イタリック　\textit{}
+% 変数名、メソッド名　タイプライタ　\texttt{}
+% コマンド名　サンセリフ　\textsf{}
+
+
+\section{目的}
+\section{原理}
+\section{実験内容}
+\section{実験結果}
+\section{考察}
+
+% 画像読み込み
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[height=4cm,pagebox=cropbox,clip]{img/array_queue.pdf}
+%     \caption{配列でのデータの管理方法}
+%     \label{fig:array_queue}
+% \end{figure}
+
+
+% ソースコード（直接挿入）
+\begin{lstlisting}[caption=main関数,label=src:main]
+#include <stdio.h>
+
+int main(int argc, char **argv)
+{
+  printf("Hello world!\n");
+  return (0);
+}
+\end{lstlisting}
+
+
+% ソースコード（別ファイルから挿入）
+% \lstinputlisting[caption=main関数,label=src:main]{src/hello.c}
+
+
+\begin{result}{実行結果}
+\begin{verbatim}
+仏説摩訶般若波羅蜜多心経
+観自在菩薩行深般若波羅蜜多時照見五蘊皆空度一切苦厄舎利子色不異空空不異色色即是空空即是色受想行識亦復如是舎利子是諸法空相不生不滅不垢不浄不増不減是故空中無色無受想行識無眼耳鼻舌身意、無色声香味触法無眼界乃至無意識界無無明亦無無明尽乃至無老死亦無老死尽無苦集滅道無智亦無得以無所得故菩提薩埵依般若波羅蜜多故心無罣礙無罣礙故無有恐怖遠離一切顛倒夢想究竟涅槃三世諸仏依般若波羅蜜多故得阿耨多羅三藐三菩提故知般若波羅蜜多是大神呪是大明呪是無上呪是無等等呪能除一切苦真実不虚故説般若波羅蜜多呪
+即説呪曰羯諦羯諦波羅羯諦波羅僧羯諦菩提薩婆訶
+般若心経
+\end{verbatim}
+\end{result}
+
+
+ほげほげ\cite{refer1}ふがふが\cite{refer2}。
+
+% 参考文献
+\begin{thebibliography}{9}
+  \bibitem{refer1} 五十嵐順子 ラーニング編集部, 『かんたん合格 基本情報技術者教科書 平成29年度』, 株式会社インプレス, 2016年, pp.288-305
+  \bibitem{refer2} 平成29年版高齢社会白書（全体版）, \url{http://www8.cao.go.jp/kourei/whitepaper/w-2017/zenbun/29pdf_index.html}, 2020年10月10日閲覧
+\end{thebibliography}
+
+\end{document}
