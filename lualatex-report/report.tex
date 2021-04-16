@@ -57,7 +57,7 @@ morecomment=[l]{//}%
 \author{著者名}
 \date{2020年10月10日}
 \newcommand{\@limit}{2020年10月10日 17:00}
-\newcommand{\@keyword}{キーワード1; キーワード2;}
+\newcommand{\@keyword}{キーワード1,キーワード2}
 
 \usepackage{hyperxmp} % XMP support with hyperref
 \usepackage[pdfencoding=auto,pdfa,pdfapart=1,pdfaconformance=B]{hyperref} % PDF/A compatible
@@ -123,6 +123,19 @@ morecomment=[l]{//}%
 \section{実験内容}
 \section{実験結果}
 \section{考察}
+
+
+\begin{table}[H]
+  \begin{center}
+    \caption{定数値}
+    \label{tb:env}
+    \begin{tabular}{|l|r|} \hline
+      \multicolumn{1}{|c|}{項目} & \multicolumn{1}{c|}{値} \\ \hline \hline
+      円周率$\pi$ & 3.1415926535 \\ \hline
+      ネイピア数$e$ & 2.7182818284 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
 % 画像読み込み
 % \begin{figure}[H]
